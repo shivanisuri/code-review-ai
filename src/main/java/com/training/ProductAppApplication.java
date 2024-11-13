@@ -16,9 +16,13 @@ public class ProductAppApplication {
 				SpringApplication.run(ProductAppApplication.class, args);
 		ProductConsoleUI ui = springContainer.getBean(ProductConsoleUI.class);
 //		ProductConsoleUI ui2 = springContainer.getBean(ProductConsoleUI.class);
+		boolean disabled = false;
 //		System.out.println(ui == ui2);
 		
 		//ui.createProductWithUI();
+		if(disabled){
+			testRepoForDisabled(springContainer)
+		}
 		testRepo(springContainer);
 	}
 
@@ -31,5 +35,15 @@ public class ProductAppApplication {
 		Product saved = repo.save(aProduct);
 		
 		System.out.println("Saved using repo: "+saved.getId());
+	}
+
+	public static void testRepoForDisabled(ApplicationContext springContainer) {
+		ProductRepository repo = springContainer.getBean(ProductRepository.class);
+		
+		Product disabledProduct = new Product("repo", 8765, 13);
+		
+		Product saved = repo.save(disabledProduct);
+		
+		System.out.println("disabledProduct in repo: "+saved.getId());
 	}
 }
