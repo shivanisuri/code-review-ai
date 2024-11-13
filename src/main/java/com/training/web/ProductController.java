@@ -33,7 +33,7 @@ public class ProductController {
 		if(p == null) {
 			return new ResponseEntity<ErrorResponse>(new ErrorResponse(404, "record not found"), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Product>(p, HttpStatus.OK);
+		return new ResponseEntity<Product>(p, HttpStatus.NOT_FOUND);
 	}
 	
   	@PostMapping("/products")
