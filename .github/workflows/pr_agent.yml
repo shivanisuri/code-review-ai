@@ -17,4 +17,4 @@ jobs:
         uses: Codium-ai/pr-agent@main
         env:
           OPENAI_KEY: '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'
-          GITHUB_TOKEN: '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'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
