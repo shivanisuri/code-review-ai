@@ -31,6 +31,9 @@ jobs:
           
           # Escape newlines and double quotes in the changed_code
           escaped_code=$(echo "$changed_code" | jq -s -R -r @json)
+
+
+          echo "CODE_REVIEW_PROMPT ${{ vars.CODE_REVIEW_PROMPT }}"
           
           response=$(curl -s https://api.openai.com/v1/chat/completions \
             -H "Content-Type: application/json" \
